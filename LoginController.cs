@@ -23,7 +23,8 @@ namespace Deliverable_2_WireFrames.Controllers
         public ActionResult Create()
         {
             ViewBag.UserType = new SelectList(db.UserTypes, "UserTypeID", "Description");
-            ViewBag.VillageID = new SelectList(db.Villages, "Village_ID", "Village_Name");
+            ViewBag.Village = new SelectList(db.Villages, "Village_ID", "Village_Name");
+            ViewBag.Gender = new SelectList(db.Genders, "Gender_ID", "Gender_Type");
             return View();
         }
 
@@ -46,7 +47,7 @@ namespace Deliverable_2_WireFrames.Controllers
                     NewUser.UserType = user.UserType;
                     db.Users.Add(NewUser);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Homepage");
+                    return RedirectToAction("Index", "Login");
                 }
             }
 
@@ -54,8 +55,9 @@ namespace Deliverable_2_WireFrames.Controllers
             {
                 throw exception;
             }
-            ViewBag.UserType = new SelectList(db.UserTypes, "UserTypeID", "Description", user.UserType);
-            ViewBag.VillageID = new SelectList(db.Villages, "Village_ID", "Village_Name", user.Village_ID);
+            ViewBag.Village = new SelectList(db.Villages, "Village_ID", "Village_Name", user.Village1);
+            ViewBag.UserType = new SelectList(db.UserTypes, "UserTypeID", "Description", user.UserType1);
+            ViewBag.Gender = new SelectList(db.Genders, "Gender_ID", "Gender_Type",user.Gender1);
             return View(user);
         }
 
@@ -70,13 +72,32 @@ namespace Deliverable_2_WireFrames.Controllers
             user = db.Users.Where(zz => zz.UserEmail == Username
                                               && zz.UserPassword == hashedpassword)
                                               .FirstOrDefault();
-            if (user != null)
+            if (user != null && user.UserType == 1)
             {
                 UserVM userVME = new UserVM();
                 userVME.user = user;
                 userVME.RefreshGUID(db);
                 TempData["userVM"] = userVME;
                 return RedirectToAction("Index", "Homepage");
+
+            }
+
+            else if (user != null && user.UserType == 2)
+            {
+                UserVM userVME = new UserVM();
+                userVME.user = user;
+                userVME.RefreshGUID(db);
+                TempData["userVM"] = userVME;
+                return RedirectToAction("LeaderIndex", "Homepage");
+
+            }
+            else if (user != null && user.UserType == 5)
+            {
+                UserVM userVME = new UserVM();
+                userVME.user = user;
+                userVME.RefreshGUID(db);
+                TempData["userVM"] = userVME;
+                return RedirectToAction("DoctorIndex", "Homepage");
 
             }
 

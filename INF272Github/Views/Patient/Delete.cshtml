@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Patient </h2>
+@using (Html.BeginForm("DoDelete", "Patient", FormMethod.Post))
+{
+    <label>Patient ID:</label><input id="Patient_ID" type="number" />
+    <br />
+    <label>Patient Name:</label><input id="Patient_Name" type="text" />
+    <br />
+    <label>Patient Surname:</label><input id="Patient_Surname" type="text" />
+    <br />
+    <input type="submit" value="Submit">
+    <br />
+    <input type="submit" value="Cancel">
+    <br />
+    <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Patient")'" />
+}
+

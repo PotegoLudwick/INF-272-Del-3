@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Patient</h2>
+@using (Html.BeginForm("DoCreate", "Patient", FormMethod.Post))
+{
+<label>Patient Name:</label><input id="Patient_Name" type="text" />
+<br />
+<label>Patient Surname:</label><input id="Patient_Surname" type="text" />
+<br />
+<label>Date of Birth:</label><input id="Date_Of_Birth" type="datetime" />
+<br />
+<label>Phone Number:</label><input id="Patient_Number" type="text" />
+<br />
+<label>Patient Race:</label><input id="Patient_Race" type="text" />
+<br />
+<label>Patient Gender:</label><input id="Patient_Name" type="text" />
+<br />
+<label>Patient Village:</label><input id="Patient_Name" type="text" />
+<br />
+<input type="submit" value="Submit">
+<br />
+<input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Patient")'"/>
+
+}
+
+
+

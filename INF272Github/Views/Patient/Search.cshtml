@@ -1,0 +1,42 @@
+﻿@model INF272Github.ViewModel.Prescription
+@model IEnumerable<INF272Github.ViewModel.Prescription>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search Patient</h2>
+@using (Html.BeginForm("DoSearch", "Patient", FormMethod.Post))
+{
+    <label>Patient ID:</label><input id="Patient_ID" type="number" />
+    <br />
+    <label>Patient Name:</label><input id="Patient_Name" type="text" />
+    <br />
+    <label>Patient Surname:</label><input id="Patient_Surname" type="text" />
+    <br />
+    <input type="submit" value="Submit">
+    <br />
+    <input type="submit" value="Cancel">
+    <br />
+    <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Patient")'" />
+}
+
+
+
+@foreach (var item in Model)
+{
+    <li>@item.Prescription_ID</li>
+    <li>@item.Description</li>
+    <li>@item.Patient_Name</li>
+    <li>@item.Patient_Surname</li>
+    <li>@item.Prescription_Date</li>
+    <li>@item.Patient_CellPhone</li>
+    <li>@item.Patient_Email</li>
+    <li>@item.Village</li>
+    <li>@item.Address</li>
+
+
+
+}
+
+
+

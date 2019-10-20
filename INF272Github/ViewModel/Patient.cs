@@ -8,6 +8,7 @@ namespace INF272Github.ViewModel
     public class Patient
     {
         //Data Members
+        //
         private int mPatientID;
        
         private string mName;

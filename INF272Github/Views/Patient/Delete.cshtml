@@ -1,4 +1,6 @@
-﻿
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @{
     ViewBag.Title = "Delete";
 }
@@ -6,16 +8,16 @@
 <h2>Delete Patient </h2>
 @using (Html.BeginForm("DoDelete", "Patient", FormMethod.Post))
 {
-    <label>Patient ID:</label><input id="Patient_ID" type="number" />
-    <br />
-    <label>Patient Name:</label><input id="Patient_Name" type="text" />
-    <br />
-    <label>Patient Surname:</label><input id="Patient_Surname" type="text" />
-    <br />
-    <input type="submit" value="Submit">
-    <br />
-    <input type="submit" value="Cancel">
-    <br />
-    <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Patient")'" />
+<label>Patient ID:</label><input id="Patient_ID" type="number" />
+<br />
+<label>Patient Name:</label><input id="Patient_Name" type="text" />
+<br />
+<label>Patient Surname:</label><input id="Patient_Surname" type="text" />
+<br />
+<input type="submit" value="Submit">
+<br />
+<input type="submit" value="Cancel">
+<br />
+<input type="button" value="Cancel" onclick="location.href='@Url.Action("Index","Patient")'" />
 }
 

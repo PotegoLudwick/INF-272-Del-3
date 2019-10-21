@@ -103,8 +103,31 @@ namespace INF272Github.Controllers
 
         }
 
+      
 
-            
+        public ActionResult DoUpdate(int id, string name, string surname, DateTime dob, string number, string race, string gender, int village)
+        {
+            try
+            {
+                SqlCommand myUpdateCommand = new SqlCommand("Update Patient Set Name='" + name + "', Surname='"+ surname +"', ID='"+id +"', DateOfBirth='"+dob +"', PhoneNumber='"+number +"', Race='"+ race +"', Gender='"+gender +"', Village='"+ village +"' where ID=" + id, myConnection); //Update {tble} set 
+
+                myConnection.Open();
+                int rowsAffected = myUpdateCommand.ExecuteNonQuery();
+                ViewBag.Message = "Success: " + rowsAffected + " rows updated.";
+            }
+            catch (Exception err)
+            {
+                ViewBag.Message = "Error: " + err.Message;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return View("Index");
+        }
+
+
+
 
 
     }

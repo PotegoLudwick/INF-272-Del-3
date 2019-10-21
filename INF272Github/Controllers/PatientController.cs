@@ -67,7 +67,7 @@ namespace INF272Github.Controllers
 
                 myConnection.Open();
                 int rowsAffected = myDeleteCommand.ExecuteNonQuery();
-                ViewBag.Message = "Success: " + rowsAffected + " rows deleted.";
+                ViewBag.Message = "Success : " + rowsAffected + " rows deleted.";
             }
             catch (Exception err)
             {
@@ -99,7 +99,8 @@ namespace INF272Github.Controllers
             {
                 myConnection.Close();
             }
-            return View("Search");
+            return View("Index");
+
 
         }
 

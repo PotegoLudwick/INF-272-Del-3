@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Deliverable_2_WireFrames.Models.Collection>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CollectionsMade</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="~/ReferencedStyles/Leader-dashboard.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create","Collections", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Return to Menu", "Index", null, new { @class = "btn btn-primary" })
+    </p>
+    <div class="col-md-6 col-md-3">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Collections</h4>
+                <p class="card-category">Collections for @DateTime.Today</p>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NoOfItemsCollected)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NoOfItemsCollected)
+                                </td>
+                                @*<td>*@
+                                @*@Html.ActionLink("Edit", "Edit", new { id=item.CollectionsID }) |
+                                        @Html.ActionLink("Details", "Details", new { id=item.CollectionsID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id=item.CollectionsID })
+                                    </td>*@
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
